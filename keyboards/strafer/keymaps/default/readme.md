@@ -1,1 +1,1 @@
-# The default keymap for bm40hsrgb
+# The default keymap for the strafer
