@@ -13,8 +13,8 @@
 
     "processor": "atmega32u4",
     "usb": {
-        "vid": "0x4B50",
-        "pid": "0x3430",
+        "vid": "0x6442",
+        "pid": "0x0001" ,
         "device_version": "0.0.1",
         "max_power": 500
     },
