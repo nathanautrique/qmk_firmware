@@ -1,1 +1,1 @@
-# The default keymap for the strafer
+# The via keymap for the strafer
