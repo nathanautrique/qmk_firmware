@@ -3,6 +3,8 @@
 
 #pragma once
 
+
+//THESE COMMENTED LINES ARE THERE WHEN STARTING A NEW KEYBOARD, BUT CAN PROBABLY JUST BE DELETED
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
@@ -20,7 +22,5 @@
 //#define NO_ACTION_ONESHOT
 
 
-
-
-
+//WAS NOT TESTED YET TO DELETE THIS, BUT I THINK YOU CAN JUST DELETE THIS, SINCE THE KEY MATRIX TO LED INDEX OF strafer.c gives the amount of leds
 #define RGB_MATRIX_LED_COUNT 28

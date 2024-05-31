@@ -17,25 +17,25 @@
 
 enum layers {
   _MAIN,
-  _LOWER,
-  _RESET,
+  _FUNC,
+  _MULT,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Main
- * .------.
- * |  ESC |------.------.------.------.------.
- * |------|   1  |   2  |   3  |   4  |   5  |
- * | CAPS |------+------+------+------+------|
- * |------|   Q  |   W  |   E  |   R  |   T  |
- * |  FN  |------+------+------+------+------|
- * |------|   A  |   S  |   D  |   F  |   G  |
- * | SHFT |------+------+------+------+---------.
- * |------|   Z  |   X  |   C  |::|   V  |   B  |
- * | CTRL |------'------'------|--------------------.
- * '------'                    |   N  | SPACE |  M  |
- *                             '--------------------'
+/* MAIN
+ * .-------.
+ * |  ESC  |-------.-------.-------.-------.-------.
+ * |-------|   1   |   2   |   3   |   4   |   5   |
+ * |  CAPS |-------+-------+-------+-------+-------|
+ * |-------|   Q   |   W   |   E   |   R   |   T   |
+ * |  FN   |-------+-------+-------+-------+-------|
+ * |-------|   A   |   S   |   D   |   F   |   G   |
+ * |  SHFT |-------+-------+-------+-------+----------.
+ * |-------|   Z   |   X   |   C   |::|   V   |   B   |
+ * |  CTRL |-------'-------'------------------------------.
+ * '-------'                      |   N   | SPACE |   M   |
+ *                                '-----------------------'
  *
  */
 
@@ -44,30 +44,68 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_1, KC_2, KC_3, KC_4, KC_5,
     KC_TAB,
               KC_Q, KC_W, KC_E, KC_R, KC_T,
-    MO(_LOWER),
+    MO(_FUNC),
               KC_A, KC_S, KC_D, KC_F, KC_G,
     KC_LSFT,
-                                    KC_V, KC_B,
-              KC_Z, KC_X, KC_C,
+              KC_Z, KC_X, KC_C,      KC_V, KC_B
     KC_LCTL,
-                                  KC_N, KC_SPC, KC_M
+                                 KC_N, KC_SPC, KC_M
 ),
 
-[_LOWER] = LAYOUT(
+//---------------------------------------------------------------------
+
+/* FUNC
+ * .-------.
+ * |  GUI  |-------.-------.-------.-------.-------.
+ * |-------|   6   |   7   |   8   |   9   |   0   |
+ * |  TAB  |-------+-------+-------+-------+-------|
+ * |-------|   Y   |   U   |   I   |   O   |   P   |
+ * |       |-------+-------+-------+-------+-------|
+ * |-------|   H   |   J   |   K   |   L   |   ;   |
+ * |  MULT |-------+-------+-------+-------+----------.
+ * |-------|   ,   |   .   |   /   |::|   -   |   =   |
+ * |  CTRL |-------'-------'-------------------------------.
+ * '-------'                      |   ALT  | SPACE |  BSPC |
+ *                                '------------------------'
+ *
+ */
+
+[_FUNC] = LAYOUT(
   KC_LGUI,
               KC_6,    KC_7,    KC_8,   KC_9,   KC_0,
   KC_TAB,
-              KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,
+              KC_Y,    KC_U,    KC_I,   KC_O,   KC_P,
   _______,
-              KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN,
-  MO(_RESET),
-                                                KC_MINS, KC_EQL,
-              KC_COMM,     KC_DOT,     KC_SLSH,
+              KC_H,    KC_J,    KC_K,   KC_L,   KC_SCLN,
+  MO(_MULT),
+              KC_COMM, KC_DOT,  KC_SLSH,     KC_MINS,  KC_EQL,
   KC_LCTL,
-                                          KC_LALT,   KC_ENT,   KC_BSPC
+                                        KC_LALT,  KC_ENT,  KC_BSPC
+
 ),
 
-[_RESET] = LAYOUT(
+
+
+
+//---------------------------------------------------------------------
+
+/* FUNC
+ * .-------.
+ * |   `   |-------.-------.-------.-------.-------.
+ * |-------|   F1  |   F2  |   F3  |   F4  |   F5  |
+ * |  TAB  |-------+-------+-------+-------+-------|
+ * |-------|       |       |       | VAL-D | VAL-I |
+ * |       |-------+-------+-------+-------+-------|
+ * |-------| PREV  |  PLAY | NEXT  | SAT-D | SAT-I |
+ * | MULT  |-------+-------+-------+-------+----------.
+ * |-------| VOL-D |  MUTE | VOL-UP|::| HUE-D | HUE-I |
+ * | RESET |-------'-------'-------------------------------.
+ * '-------'                      | MODE-R | TOGG | MODE-F |
+ *                                '------------------------'
+ *
+ */
+
+[_MULT] = LAYOUT(
   KC_GRV,
               KC_F1,    KC_F2,  KC_F3,    KC_F4, KC_F5,
   _______,
@@ -75,10 +113,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,
               KC_MPRV, KC_MPLY,  KC_MNXT,  RGB_SAD, RGB_SAI,
   _______,
-                                                RGB_HUD, RGB_HUI,
-             KC_VOLD,  KC_MUTE,  KC_VOLU,
-  QK_BOOT,
+             KC_VOLD,  KC_MUTE,  KC_VOLU,        RGB_HUD, RGB_HUI,
+QK_BOOT
                                     RGB_MODE_REVERSE, RGB_TOG, RGB_MODE_FORWARD
+
 )
 };
 
