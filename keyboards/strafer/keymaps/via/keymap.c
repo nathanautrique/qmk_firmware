@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MO(_FUNC),
               KC_A, KC_S, KC_D, KC_F, KC_G,
     KC_LSFT,
-              KC_Z, KC_X, KC_C,      KC_V, KC_B
+              KC_Z, KC_X, KC_C,      KC_V, KC_B,
     KC_LCTL,
                                  KC_N, KC_SPC, KC_M
 ),
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_MPRV, KC_MPLY,  KC_MNXT,  RGB_SAD, RGB_SAI,
   _______,
              KC_VOLD,  KC_MUTE,  KC_VOLU,        RGB_HUD, RGB_HUI,
-QK_BOOT
+QK_BOOT,
                                     RGB_MODE_REVERSE, RGB_TOG, RGB_MODE_FORWARD
 
 )
