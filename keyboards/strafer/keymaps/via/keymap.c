@@ -17,7 +17,7 @@
 
 enum layers {
   _MAIN,
-  _FUNC,
+  _MOD,
   _MULT,
 };
 
@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-------|   1   |   2   |   3   |   4   |   5   |
  * |  CAPS |-------+-------+-------+-------+-------|
  * |-------|   Q   |   W   |   E   |   R   |   T   |
- * |  FN   |-------+-------+-------+-------+-------|
+ * |  MO   |-------+-------+-------+-------+-------|
  * |-------|   A   |   S   |   D   |   F   |   G   |
  * |  SHFT |-------+-------+-------+-------+----------.
  * |-------|   Z   |   X   |   C   |::|   V   |   B   |
@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_1, KC_2, KC_3, KC_4, KC_5,
     KC_TAB,
               KC_Q, KC_W, KC_E, KC_R, KC_T,
-    MO(_FUNC),
+    MO(_MOD),
               KC_A, KC_S, KC_D, KC_F, KC_G,
     KC_LSFT,
               KC_Z, KC_X, KC_C,      KC_V, KC_B,
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //---------------------------------------------------------------------
 
-/* FUNC
+/* MOD
  * .-------.
  * |  GUI  |-------.-------.-------.-------.-------.
  * |-------|   6   |   7   |   8   |   9   |   0   |
@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *
  */
 
-[_FUNC] = LAYOUT(
+[_MOD] = LAYOUT(
   KC_LGUI,
               KC_6,    KC_7,    KC_8,   KC_9,   KC_0,
   KC_TAB,
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //---------------------------------------------------------------------
 
-/* FUNC
+/* MULT
  * .-------.
  * |   `   |-------.-------.-------.-------.-------.
  * |-------|   F1  |   F2  |   F3  |   F4  |   F5  |
