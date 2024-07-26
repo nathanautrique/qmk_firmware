@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,
               KC_KP_PLUS, KC_KP_MINUS, KC_KP_ASTERISK, KC_KP_SLASH,
     MO(_LAYER2),
-              KC_KP_EQUAL, _______, _______, KC_KP_ENTER,
+              KC_EQL , _______, _______, KC_KP_ENTER,
     KC_KP_DOT
 ),
 
