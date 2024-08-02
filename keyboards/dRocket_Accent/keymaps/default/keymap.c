@@ -29,8 +29,11 @@ enum custom_keycodes {  //ALT-codes
 
     ae = SAFE_RANGE, //145
     oe, //0156
+    å, //0197
     AE, //146
     OE, //0140
+    Å, //0229
+
 
 
     ä, //0228
@@ -38,11 +41,13 @@ enum custom_keycodes {  //ALT-codes
     ï, //0239
     ö, //0246
     ü, //0252
+    ÿ, //0255
     Ä, //0196
     Ë, //0203
     Ï, //0207
     Ö, //0214
     Ü, //0220
+    Ÿ, //0159 not_in_yet
 
     á, //0225
     é, //0233
@@ -76,6 +81,35 @@ enum custom_keycodes {  //ALT-codes
     Ì, //0204
     Ò, //0210
     Ù, //0217
+
+
+    €, //0128 not_in_yet
+    $, //36 not_in_yet
+    ¡, //0161 not_in_yet
+    ¿, //0191 not_in_yet
+    °, //0176 not_in_yet
+    ª, //0170 not_in_yet
+    º, //0186 not_in_yet
+
+    ç, //0231 not_in_yet
+    Ç, //0199 not_in_yet
+    ß, //223 not_in_yet
+    ø, //0248 not_in_yet
+    Ø, //0216 not_in_yet
+    þ, //0254 not_in_yet
+    Þ, //0222 not_in_yet
+    ð, //0240 not_in_yet
+    Ð, //0208 not_in_yet
+    ‹, //0139 not_in_yet
+    ›, //0155 not_in_yet
+    «, //0171 not_in_yet
+    », //0187 not_in_yet
+    š, //0154 not_in_yet
+    Š, //0138 not_in_yet
+    ž, //0158 not_in_yet
+    Ž, //0142 not_in_yet
+    ñ, //0241 not_in_yet
+    Ñ, //0209 not_in_yet
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -153,8 +187,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint16_t PROGMEM ae_combo[] = {KC_A, KC_E, COMBO_END};
 const uint16_t PROGMEM oe_combo[] = {KC_O, KC_E, COMBO_END};
+const uint16_t PROGMEM å_combo[] = {KC_O, KC_A, COMBO_END};
 const uint16_t PROGMEM AE_combo[] = {S(KC_A), S(KC_E), COMBO_END};
 const uint16_t PROGMEM OE_combo[] = {S(KC_O), S(KC_E), COMBO_END};
+const uint16_t PROGMEM Å_combo[] = {S(KC_O), S(KC_A), COMBO_END};
 
 const uint16_t PROGMEM ä_combo[] = {KC_A, S(KC_QUOTE), COMBO_END};
 const uint16_t PROGMEM ë_combo[] = {KC_E, S(KC_QUOTE), COMBO_END};
@@ -207,8 +243,10 @@ const uint16_t PROGMEM Ù_combo[] = {S(KC_U), KC_GRV, COMBO_END};
 combo_t key_combos[] = {
     COMBO(ae_combo, ae),
     COMBO(oe_combo, oe),
+    COMBO(oe_combo, å),
     COMBO(AE_combo, AE),
     COMBO(OE_combo, OE),
+    COMBO(OE_combo, Å),
 
     COMBO(ä_combo, ä),
     COMBO(ë_combo, ë),
@@ -273,6 +311,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_5) SS_TAP(X_KP_6)));
       }
       break;
+    case å:
+      if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_9) SS_TAP(X_KP_7)));
+      }
+      break;
     case AE:
       if (record->event.pressed) {
             SEND_STRING(SS_LALT(SS_TAP(X_KP_1) SS_TAP(X_KP_4) SS_TAP(X_KP_6)));
@@ -281,6 +324,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case OE:
       if (record->event.pressed) {
             SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_4) SS_TAP(X_KP_0)));
+      }
+      break;
+    case Å:
+      if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_9)));
       }
       break;
 
