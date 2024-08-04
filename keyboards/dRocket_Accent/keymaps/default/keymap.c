@@ -26,10 +26,10 @@ enum custom_keycodes {  //ALT-codes
 
     ae = SAFE_RANGE, //145
     oe, //0156
-    å, //0197
+    å, //0229
     AE, //146
     OE, //0140
-    Å, //0229
+    Å, //0197
 
 
 
@@ -57,7 +57,7 @@ enum custom_keycodes {  //ALT-codes
     Í, //0205
     Ó, //0211
     Ú, //0218
-    Ý, //0218
+    Ý, //0221
 
     â, //0226
     ê, //0234
@@ -81,12 +81,20 @@ enum custom_keycodes {  //ALT-codes
     Ò, //0210
     Ù, //0217
 
+    ã, //0227
+    õ, //0245
+    ñ, //0241
+    Ã, //0195
+    Õ, //0213
+    Ñ, //0209
+
 
     €, //0128
     dollar, //36
     upside_down_exclamationmark, //0161
     upside_down_questionmark, //0191
     degree_sign, //0176
+    π, //227
     ², //253
     ³, //0179 not yet implemented
     ª, //0170
@@ -111,8 +119,6 @@ enum custom_keycodes {  //ALT-codes
     Š, //0138
     ž, //0158
     Ž, //0142
-    ñ, //0241
-    Ñ, //0209
 
 };
 
@@ -134,15 +140,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_QUOTE,     S(KC_6),            KC_GRV,         S(KC_GRV),
     ª,
               € , upside_down_exclamationmark, degree_sign,     µ,
-    TG(_UMAIN)                                                  //,ç
+    LT(_LAYER1, KC_NO)                                                  //,ç
 ),
 
 [_UMAIN] = LAYOUT(
+    S(KC_QUOTE),
+              KC_QUOTE,      S(KC_6),       KC_GRV, S(KC_GRV),
     º,
-              _______,      _______,       _______, _______,
-    _______,
-              dollar, upside_down_questionmark, _______, plus_minus,
-    TG(_UMAIN)                                         //,Ç
+              dollar, upside_down_questionmark, plus_minus, π,
+    LT(_ULAYER1, KC_NO)                                         //,Ç
 ),
 
 
@@ -153,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               quote_left, quote_right, ², ð,
     ž,
               ç ,         ß,           ø, þ,
-    TG(_UMAIN)                            //,KC_Y
+    _______                            //,KC_Y
 ),
 
 [_ULAYER1] = LAYOUT(
@@ -161,7 +167,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               double_quote_left , double_quote_right, ³, Ð,
     Ž,
               Ç ,                   _______,          Ø, Þ,
-    TG(_UMAIN)                                           //,KC_Y
+    _______                                           //,KC_Y
 ),
 
 };
@@ -169,10 +175,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 const uint16_t PROGMEM ae_combo[] = {ª, €, COMBO_END};
 const uint16_t PROGMEM oe_combo[] = {degree_sign, €, COMBO_END};
 const uint16_t PROGMEM å_combo[] = {degree_sign, ª, COMBO_END};
-const uint16_t PROGMEM AE_combo[] = {ª, €, COMBO_END};
-const uint16_t PROGMEM OE_combo[] = {degree_sign, €, COMBO_END};
-const uint16_t PROGMEM Å_combo[] = {degree_sign, ª, COMBO_END};
-
+const uint16_t PROGMEM AE_combo[] = {º, dollar, COMBO_END};
+const uint16_t PROGMEM OE_combo[] = {plus_minus, dollar, COMBO_END};
+const uint16_t PROGMEM Å_combo[] = {plus_minus, º, COMBO_END};
 
 const uint16_t PROGMEM ä_combo[] = {ª, S(KC_QUOTE), COMBO_END};
 const uint16_t PROGMEM ë_combo[] = {€, S(KC_QUOTE), COMBO_END};
@@ -180,11 +185,11 @@ const uint16_t PROGMEM ï_combo[] = {upside_down_exclamationmark, S(KC_QUOTE), C
 const uint16_t PROGMEM ö_combo[] = {degree_sign, S(KC_QUOTE), COMBO_END};
 const uint16_t PROGMEM ü_combo[] = {µ, S(KC_QUOTE), COMBO_END};
 //const uint16_t PROGMEM ÿ_combo[] = {µ, S(KC_QUOTE), COMBO_END};
-const uint16_t PROGMEM Ä_combo[] = {ª, S(KC_QUOTE), COMBO_END};
-const uint16_t PROGMEM Ë_combo[] = {€, S(KC_QUOTE), COMBO_END};
-const uint16_t PROGMEM Ï_combo[] = {upside_down_exclamationmark, S(KC_QUOTE), COMBO_END};
-const uint16_t PROGMEM Ö_combo[] = {degree_sign, S(KC_QUOTE), COMBO_END};
-const uint16_t PROGMEM Ü_combo[] = {µ, S(KC_QUOTE), COMBO_END};
+const uint16_t PROGMEM Ä_combo[] = {º, S(KC_QUOTE), COMBO_END};
+const uint16_t PROGMEM Ë_combo[] = {dollar, S(KC_QUOTE), COMBO_END};
+const uint16_t PROGMEM Ï_combo[] = {upside_down_questionmark, S(KC_QUOTE), COMBO_END};
+const uint16_t PROGMEM Ö_combo[] = {plus_minus, S(KC_QUOTE), COMBO_END};
+const uint16_t PROGMEM Ü_combo[] = {π, S(KC_QUOTE), COMBO_END};
 //const uint16_t PROGMEM Ÿ_combo[] = {S(Y), S(KC_QUOTE), COMBO_END};
 
 const uint16_t PROGMEM á_combo[] = {ª, KC_QUOTE, COMBO_END};
@@ -193,25 +198,23 @@ const uint16_t PROGMEM í_combo[] = {upside_down_exclamationmark, KC_QUOTE, COMB
 const uint16_t PROGMEM ó_combo[] = {degree_sign, KC_QUOTE, COMBO_END};
 const uint16_t PROGMEM ú_combo[] = {µ, KC_QUOTE, COMBO_END};
 //const uint16_t PROGMEM ý_combo[] = {KC_Y, KC_QUOTE, COMBO_END};
-const uint16_t PROGMEM Á_combo[] = {ª, KC_QUOTE, COMBO_END};
-const uint16_t PROGMEM É_combo[] = {€, KC_QUOTE, COMBO_END};
-const uint16_t PROGMEM Í_combo[] = {upside_down_exclamationmark, KC_QUOTE, COMBO_END};
-const uint16_t PROGMEM Ó_combo[] = {degree_sign, KC_QUOTE, COMBO_END};
-const uint16_t PROGMEM Ú_combo[] = {µ, KC_QUOTE, COMBO_END};
-const uint16_t PROGMEM Ú_combo[] = {µ, KC_QUOTE, COMBO_END};
+const uint16_t PROGMEM Á_combo[] = {º, KC_QUOTE, COMBO_END};
+const uint16_t PROGMEM É_combo[] = {dollar, KC_QUOTE, COMBO_END};
+const uint16_t PROGMEM Í_combo[] = {upside_down_questionmark, KC_QUOTE, COMBO_END};
+const uint16_t PROGMEM Ó_combo[] = {plus_minus, KC_QUOTE, COMBO_END};
+const uint16_t PROGMEM Ú_combo[] = {π, KC_QUOTE, COMBO_END};
 //const uint16_t PROGMEM Ý_combo[] = {S(KC_Y), KC_QUOTE, COMBO_END};
-
 
 const uint16_t PROGMEM â_combo[] = {ª, S(KC_6), COMBO_END};
 const uint16_t PROGMEM ê_combo[] = {€, S(KC_6), COMBO_END};
 const uint16_t PROGMEM î_combo[] = {upside_down_exclamationmark, S(KC_6), COMBO_END};
 const uint16_t PROGMEM ô_combo[] = {degree_sign, S(KC_6), COMBO_END};
 const uint16_t PROGMEM û_combo[] = {µ, S(KC_6), COMBO_END};
-const uint16_t PROGMEM Â_combo[] = {ª, S(KC_6), COMBO_END};
-const uint16_t PROGMEM Ê_combo[] = {€, S(KC_6), COMBO_END};
-const uint16_t PROGMEM Î_combo[] = {upside_down_exclamationmark, S(KC_6), COMBO_END};
-const uint16_t PROGMEM Ô_combo[] = {degree_sign, S(KC_6), COMBO_END};
-const uint16_t PROGMEM Û_combo[] = {µ, S(KC_6), COMBO_END};
+const uint16_t PROGMEM Â_combo[] = {º, S(KC_6), COMBO_END};
+const uint16_t PROGMEM Ê_combo[] = {dollar, S(KC_6), COMBO_END};
+const uint16_t PROGMEM Î_combo[] = {upside_down_questionmark, S(KC_6), COMBO_END};
+const uint16_t PROGMEM Ô_combo[] = {plus_minus, S(KC_6), COMBO_END};
+const uint16_t PROGMEM Û_combo[] = {π, S(KC_6), COMBO_END};
 
 
 const uint16_t PROGMEM à_combo[] = {ª, KC_GRV, COMBO_END};
@@ -219,11 +222,22 @@ const uint16_t PROGMEM è_combo[] = {€, KC_GRV, COMBO_END};
 const uint16_t PROGMEM ì_combo[] = {upside_down_exclamationmark, KC_GRV, COMBO_END};
 const uint16_t PROGMEM ò_combo[] = {degree_sign, KC_GRV, COMBO_END};
 const uint16_t PROGMEM ù_combo[] = {µ, KC_GRV, COMBO_END};
-const uint16_t PROGMEM À_combo[] = {ª, KC_GRV, COMBO_END};
-const uint16_t PROGMEM È_combo[] = {€, KC_GRV, COMBO_END};
-const uint16_t PROGMEM Ì_combo[] = {upside_down_exclamationmark, KC_GRV, COMBO_END};
-const uint16_t PROGMEM Ò_combo[] = {degree_sign, KC_GRV, COMBO_END};
-const uint16_t PROGMEM Ù_combo[] = {µ, KC_GRV, COMBO_END};
+const uint16_t PROGMEM À_combo[] = {º, KC_GRV, COMBO_END};
+const uint16_t PROGMEM È_combo[] = {dollar, KC_GRV, COMBO_END};
+const uint16_t PROGMEM Ì_combo[] = {upside_down_questionmark, KC_GRV, COMBO_END};
+const uint16_t PROGMEM Ò_combo[] = {plus_minus, KC_GRV, COMBO_END};
+const uint16_t PROGMEM Ù_combo[] = {π, KC_GRV, COMBO_END};
+
+const uint16_t PROGMEM ã_combo[] = {ª, S(KC_GRV), COMBO_END};
+const uint16_t PROGMEM e_tilde_combo[] = {€, S(KC_GRV), COMBO_END};
+const uint16_t PROGMEM i_tilde_combo[] = {upside_down_exclamationmark, S(KC_GRV), COMBO_END};
+const uint16_t PROGMEM õ_combo[] = {degree_sign, S(KC_GRV), COMBO_END};
+const uint16_t PROGMEM ñ_combo[] = {µ, S(KC_GRV), COMBO_END};
+const uint16_t PROGMEM Ã_combo[] = {º, S(KC_GRV), COMBO_END};
+const uint16_t PROGMEM E_tilde_combo[] = {dollar, S(KC_GRV), COMBO_END};
+const uint16_t PROGMEM I_tilde_combo[] = {upside_down_questionmark, S(KC_GRV), COMBO_END};
+const uint16_t PROGMEM Õ_combo[] = {plus_minus, S(KC_GRV), COMBO_END};
+const uint16_t PROGMEM Ñ_combo[] = {π, S(KC_GRV), COMBO_END};
 
 //const uint16_t PROGMEM testCombo[] = {LT(_LAYER2, KC_KP_5), LT(_LAYER1, KC_KP_0), COMBO_END};
 
@@ -283,14 +297,37 @@ combo_t key_combos[] = {
     COMBO(Ò_combo, Ò),
     COMBO(Ù_combo, Ù),
 
+    COMBO(ã_combo,ã),
+    COMBO(e_tilde_combo,KC_SPACE),
+    COMBO(i_tilde_combo,KC_SPACE),
+    COMBO(õ_combo,õ),
+    COMBO(ñ_combo,ñ),
+    COMBO(Ã_combo,Ã),
+    COMBO(E_tilde_combo,KC_SPACE),
+    COMBO(I_tilde_combo,KC_SPACE),
+    COMBO(Õ_combo,Õ),
+    COMBO(Ñ_combo,Ñ),
+
     //COMBO(testCombo, LT(_LAYER3, €NTER)),
 };
 
-//define modifiers
-#define MODS_SHIFT_MASK  (MOD_BIT(KC_LSFT)|MOD_BIT(KC_RSFT))
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+
+
+    case LT(_LAYER1, KC_NO):
+      if (record->tap.count && record->event.pressed) {
+        layer_invert(_UMAIN);
+        return false;
+      }
+      break;
+
+    case LT(_ULAYER1, KC_NO):
+      if (record->tap.count && record->event.pressed) {
+        layer_invert(_UMAIN);
+        return false;
+      }
+      break;
 
     case ae:
       if (record->event.pressed) {
@@ -304,7 +341,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case å:
       if (record->event.pressed) {
-            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_9) SS_TAP(X_KP_7)));
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_9)));
       }
       break;
     case AE:
@@ -319,7 +356,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case Å:
       if (record->event.pressed) {
-            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_9)));
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_9) SS_TAP(X_KP_7)));
       }
       break;
 
@@ -379,7 +416,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case Ü:
       if (record->event.pressed) {
-            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) rSS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_0)));
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_0)));
       }
       break;
     // case Ÿ:
@@ -445,7 +482,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case Ú:
       if (record->event.pressed) {
-            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_0)));
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_1) SS_TAP(X_KP_8)));
       }
       break;
     // case Ý:
@@ -505,7 +542,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case Û:
       if (record->event.pressed) {
-            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_1)));
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_1) SS_TAP(X_KP_9)));
       }
       break;
 
@@ -561,7 +598,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case Ù:
       if (record->event.pressed) {
-            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_1) SS_TAP(X_KP_9)));
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_1) SS_TAP(X_KP_7)));
+      }
+      break;
+
+
+
+    case ã:
+      if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_7)));
+      }
+      break;
+
+    case õ:
+      if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_4) SS_TAP(X_KP_5)));
+      }
+      break;
+    case ñ:
+      if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_4) SS_TAP(X_KP_1)));
+      }
+      break;
+    case Ã:
+      if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_9) SS_TAP(X_KP_5)));
+      }
+      break;
+
+    case Õ:
+      if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_1) SS_TAP(X_KP_3)));
+      }
+      break;
+    case Ñ:
+      if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_0) SS_TAP(X_KP_9)));
       }
       break;
 
@@ -590,6 +662,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case degree_sign:
       if (record->event.pressed) {
             SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_7) SS_TAP(X_KP_6)));
+      }
+      break;
+    case π:
+      if (record->event.pressed) {
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_7)));
       }
       break;
     case ²:
@@ -711,16 +788,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_1) SS_TAP(X_KP_4) SS_TAP(X_KP_2)));
       }
       break;
-    case ñ:
-      if (record->event.pressed) {
-            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_4) SS_TAP(X_KP_1)));
-      }
-      break;
-    case Ñ:
-      if (record->event.pressed) {
-            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_0) SS_TAP(X_KP_9)));
-      }
-      break;
 
   }
   return true;
@@ -730,15 +797,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 bool rgb_matrix_indicators_user(void) {
     switch (get_highest_layer(layer_state)) {
         case _MAIN:
-        case _LAYER1:
-            rgb_matrix_set_color_all(255,255,255);
+            rgb_matrix_set_color_all(0,255,255);
             return true;
             break;
         case _UMAIN:
-        case _ULAYER1:
-            rgb_matrix_set_color_all(25, 50, 255);
+            rgb_matrix_set_color_all(0, 0, 255);
             return true;
             break;
+        case _LAYER1:
+            rgb_matrix_set_color_all(255,0,255);
+            return true;
+            break;
+        case _ULAYER1:
+            rgb_matrix_set_color_all(255,255,0);
+            return true;
+            break;
+
         default:
             return false;
             break;
