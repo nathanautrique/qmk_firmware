@@ -104,7 +104,7 @@ enum custom_keycodes {  //ALT-codes
 
     ç, //0231
     Ç, //0199
-    ß, //223
+    ß, //0223
     ø, //0248
     Ø, //0216
     þ, //0254
@@ -715,7 +715,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case ß:
       if (record->event.pressed) {
-            SEND_STRING(SS_LALT(SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_3)));
+            SEND_STRING(SS_LALT(SS_TAP(X_KP_0) SS_TAP(X_KP_2) SS_TAP(X_KP_2) SS_TAP(X_KP_3)));
       }
       break;
     case ø:
@@ -797,19 +797,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 bool rgb_matrix_indicators_user(void) {
     switch (get_highest_layer(layer_state)) {
         case _MAIN:
-            rgb_matrix_set_color_all(0,255,255);
+            rgb_matrix_set_color_all(0,100,100);
             return true;
             break;
         case _UMAIN:
-            rgb_matrix_set_color_all(0, 0, 255);
+            rgb_matrix_set_color_all(0, 0, 100);
             return true;
             break;
         case _LAYER1:
-            rgb_matrix_set_color_all(255,0,255);
+            rgb_matrix_set_color_all(100,100,0);
             return true;
             break;
         case _ULAYER1:
-            rgb_matrix_set_color_all(255,255,0);
+            rgb_matrix_set_color_all(100,50,0);
             return true;
             break;
 
