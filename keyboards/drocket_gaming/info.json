@@ -43,7 +43,7 @@
 
     "rgb_matrix": {
         "driver": "ws2812",
-        "max_brightness": 50,
+        "max_brightness": 150,
         "center_point": [75,12],
         "animations": {
             "alphas_mods": true,

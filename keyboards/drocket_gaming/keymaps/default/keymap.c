@@ -37,10 +37,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_MAIN] = LAYOUT(
     MO(_LAYER1),
-              KC_F19, KC_F20, KC_F21, KC_F22,
-    KC_F18,
-              KC_F14, KC_F15, KC_F16, KC_F17,
-    KC_F13
+              KC_U, KC_I, KC_O, KC_P,
+    KC_Y,
+              KC_J, KC_K, KC_L, KC_SCLN,
+    KC_H
 ),
 
 [_LAYER1] = LAYOUT(
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,
     _______,
               RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD,
-    _______,
+    _______
 ),
 }
 ;
